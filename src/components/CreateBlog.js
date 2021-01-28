@@ -1,22 +1,25 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 const CreateBlog = () => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [author, setAuthor] = useState("");
   const [isPending, setIsPending] = useState(false);
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const blog = { title, body, author };
     setIsPending(true);
-    fetch('http://localhost:4000/blogs/', {
-      method: 'POST',
+    fetch("http://localhost:4000/blogs/", {
+      method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(blog)
+      body: JSON.stringify(blog),
     }).then(() => {
       console.log("new Blog Added", blog);
       setIsPending(false);
+      history.push("/");
     });
   };
   return (

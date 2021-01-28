@@ -11,13 +11,6 @@ const BlogList = ({ blogs, title }) => {
               <h2>{blog.title}</h2>
               <p>Wirtten By {blog.author}</p>
             </Link>
-            {/* <button
-              onClick={() => {
-                handleDelete(blog.id);
-              }}
-            >
-              Delete
-            </button> */}
           </div>
         ))}
     </div>
