@@ -1,15 +1,30 @@
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import BlogDetails from "./components/BlogDetails";
+import CreateBlog from "./components/CreateBlog";
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-      <div className="content">
-        <Home />
+    <Router>
+      <div className="App">
+        <Navbar />
+        <div className="content">
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/create">
+              <CreateBlog />
+            </Route>
+            <Route path="/blogs/:id">
+              <BlogDetails />
+            </Route>
+          </Switch>
+        </div>
       </div>
-    </div>
+    </Router>
   );
-}       
+}
 
 export default App;
